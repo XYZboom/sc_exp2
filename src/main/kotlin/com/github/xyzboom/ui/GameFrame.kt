@@ -16,7 +16,6 @@ class GameFrame : JFrame() {
     var chessBoard = ChessBoard()
     var currentPlayer = PlayerType.PLAYER
     var finished = false
-    var lastPoint: Point? = null
     private val boardPanel = BoardPanel()
     private val startButton = JButton("开始")
     private val undoButton = JButton("悔棋")
@@ -46,6 +45,7 @@ class GameFrame : JFrame() {
                 currentPlayer = PlayerType.PLAYER
                 chessBoard = ChessBoard()
                 finished = false
+                repaint()
             }
         })
 
@@ -157,6 +157,16 @@ class GameFrame : JFrame() {
                             (centerY - cellSize / 2).roundToInt(),
                             cellSize.roundToInt(), cellSize.roundToInt()
                         )
+                        if (x == chessBoard.lastPoint?.x?.toInt() && y == chessBoard.lastPoint?.y?.toInt()) {
+                            g.color = Color.GREEN
+                            g as Graphics2D
+                            g.stroke = BasicStroke(1.5f)
+                            g.drawOval(
+                                (centerX - cellSize / 2).roundToInt(),
+                                (centerY - cellSize / 2).roundToInt(),
+                                cellSize.roundToInt(), cellSize.roundToInt()
+                            )
+                        }
                     }
                 }
             }

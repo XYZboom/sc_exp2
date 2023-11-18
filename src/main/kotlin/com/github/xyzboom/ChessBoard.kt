@@ -11,7 +11,7 @@ class ChessBoard(
     },
     val operationSequence: ArrayDeque<Pair<Point, PlayerType>> = ArrayDeque(),
 ) {
-
+    val lastPoint get() = operationSequence.lastOrNull()?.first
     fun copy(): ChessBoard {
         return ChessBoard(Array(BOARD_SIZE) {
             cells[it].copyOf()

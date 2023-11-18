@@ -30,7 +30,7 @@ class Point(val x: Double, val y: Double) {
     operator fun component2() = y.toInt()
 
     override fun toString(): String {
-        return "com.github.xyzboom.Point(x=$x, y=$y)"
+        return "Point(x=$x, y=$y)"
     }
 
 }
